@@ -65,6 +65,10 @@ AssetsWebpackPlugin.prototype = {
           var typeName = getAssetKind(options, asset)
           typeMap[typeName] = assetPath + asset
 
+          if (compilation.assets[asset].integrity) {
+            typeMap[typeName + 'Integrity'] = compilation.assets[asset].integrity;
+          }
+
           return typeMap
         }, {})
 
